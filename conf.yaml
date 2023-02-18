@@ -1,0 +1,32 @@
+instance: localhost
+
+push_gateway: http://127.0.0.1:9091
+
+job: fullmesh_exporter
+
+cron: "*/30 * * * * *"
+
+dns_check:
+  domains:
+    - resolve: www.huckops.xyz
+      type: A
+    - resolve: nas.huckops.xyz
+      type: A
+    - resolve: github.com
+      type: A
+  retry: 3
+  pool: 5
+
+
+ping:
+#  machine_list_url:
+  machine_list:
+    - 8.8.8.8
+    - 8.8.4.4
+    - 223.5.5.5
+  size: 32
+  packages: 30
+  interval: 1000
+  retry: 3
+  pool: 5
+  timeout: 2
